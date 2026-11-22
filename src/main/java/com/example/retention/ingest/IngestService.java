@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -46,6 +47,7 @@ public class IngestService {
     private final WorldService worldService;
     private final ObligationLedgerService ledgerService;
     private final DisposalService disposalService;
+    private final ApplicationEventPublisher publisher;
     private final ObjectMapper canonicalMapper;
 
     public IngestService(RecordingObjectRepository recordingRepository,
@@ -56,7 +58,8 @@ public class IngestService {
                          WatermarkService watermark,
                          WorldService worldService,
                          ObligationLedgerService ledgerService,
-                         DisposalService disposalService) {
+                         DisposalService disposalService,
+                         ApplicationEventPublisher publisher) {
         this.recordingRepository = recordingRepository;
         this.segmentRepository = segmentRepository;
         this.fieldRepository = fieldRepository;
@@ -66,6 +69,7 @@ public class IngestService {
         this.worldService = worldService;
         this.ledgerService = ledgerService;
         this.disposalService = disposalService;
+        this.publisher = publisher;
         this.canonicalMapper = new ObjectMapper()
                 .configure(SerializationFeature.ORDER_MAP_ENTRIES_BY_KEYS, true);
     }
@@ -168,6 +172,11 @@ public class IngestService {
                     fieldRepository.save(fc);
                 }
             }
+        }
+        // 新版本取代旧转写：发布更正事件使隐私物化视图失效（旧原件仅置 SUPERSEDED，不删除）
+        if (supersedesId != null) {
+            publisher.publishEvent(new com.example.retention.privacy.PrivacyEvents.RecordingSuperseded(
+                    supersedesId, rec.getId(), rec.getSeq()));
         }
         return new RecordingOutcome(supersedesId == null ? "CREATED" : "CREATED_SUPERSEDES",
                 rec.getId(), segmentIds(rec.getId()), null,

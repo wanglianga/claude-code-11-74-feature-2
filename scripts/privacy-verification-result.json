@@ -1,0 +1,278 @@
+{
+  "base": "http://127.0.0.1:8080",
+  "total": 54,
+  "passed": 54,
+  "failed": 0,
+  "results": [
+    {
+      "name": "P0 重置成功",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "P1 遮蔽规则 DEFAULT v1 登记",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "P1 同版本重复登记 → 409",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "P2 投诉录音接入（两段）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "P3 自动定位登记4个敏感实体",
+      "pass": true,
+      "detail": "{\"recordingId\": \"fcb1d011-c6f4-4458-9bad-c48b7638005a\", \"locatedCount\": 4, \"registeredCount\": 4, \"entities\": [{\"entityId\": \"2db3e076-462f-49a5-925f-3407b292b89f\", \"registeredSeq\": 6, \"entityType\": \"ID_CARD\", \"canonicalValue\": \"110101199003078888\", \"revision\": 1, \"supersedesId\": null, \"mentions\": [{\"mentionId\": \"2c2c2856-fc39-4bad-9d69-578d572ff2e6\", \"segmentId\": \"6c1df6ff-48c7-43b5-9539-5acedfe212f7\", \"segmentSeq\": 1, \"startOffset\": 8, \"endOffset\": 26, \"coveredText\": \"110101199003078888\", \"matchMode\": \"FULL\", \"mentionSeq\": 1}]}, {\"entityId\": \"79886965-ffbc-4d81-bfad-b24472fe37b1\", \"registeredSeq\": 7, \"entityType\": \"ADDRESS\", \"canonicalValue\": \"住址北京市朝阳区建国路88号\", \"revision\": 1, \"supersedesId\": null, \"mentions\": [{\"mentionId\": \"54b1019e-ee51-4c23-8657-93a44f0f93fe\", \"segmentId\": \"4c698677-90df-4a0d-be4f-18a3f12bbb26\", \"segmentSeq\": 2, \"startOffset\": 13, \"endOffset\": 27, \"coveredText\": \"住址北京市朝阳区建国路88号\", \"matchMode\": \"FULL\", \"mentionSeq\": 1}]}, {\"entityId\": \"cb13a386-7f54-4319-a2e6-58817fffeb31\", \"registeredSeq\": 8, \"entityType\": \"HEALTH\", \"canonicalValue\": \"诊断高血压二级\", \"revision\": 1, \"supersedesId\": null, \"mentions\": [{\"mentionId\": \"fd8eb9f4-b666-48b0-be8e-f15f97ca8648\", \"segmentId\": \"4c698677-90df-4a0d-be4f-18a3f12bbb26\", \"segmentSeq\": 2, \"startOffset\": 28, \"endOffset\": 35, \"coveredText\": \"诊断高血压二级\", \"matchMode\": \"FULL\", \"mentionSeq\": 1}]}, {\"entityId\": \"523ba67c-b779-42d2-b22a-12fae93599dc\", \"registeredSeq\": 9, \"entityType\": \"BANK_CARD\", \"canonicalValue\": \"6222021234567890\", \"revision\": 1, \"supersedesId\": null, \"mentions\": [{\"mentionId\": \"b9858725-fe19-4f69-9d37-c104a261ee05\", \"segmentId\": \"6c1df6ff-48c7-43b5-9539-5acedfe212f7\", \"segmentSeq\": 1, \"startOffset\": 32, \"endOffset\": 40, \"coveredText\": \"62220212\", \"matchMode\": \"PREFIX\", \"mentionSeq\": 1}, {\"mentionId\": \"5f2b548d-4d14-4d5d-bba2-5b05d75364e8\", \"segmentId\": \"4c698677-90df-4a0d-be4f-18a3f12bbb26\", \"segmentSeq\": 2, \"startOffset\": 0, \"endOffset\": 8, \"coveredText\": \"34567890\", \"matchMode\": \"SUFFIX\", \"mentionSeq\": 2}]}]}"
+    },
+    {
+      "name": "P3 银行卡跨两段：PREFIX(段1)+SUFFIX(段2) 两条提及",
+      "pass": true,
+      "detail": "[{\"mentionId\": \"b9858725-fe19-4f69-9d37-c104a261ee05\", \"segmentId\": \"6c1df6ff-48c7-43b5-9539-5acedfe212f7\", \"segmentSeq\": 1, \"startOffset\": 32, \"endOffset\": 40, \"coveredText\": \"62220212\", \"matchMode\": \"PREFIX\", \"mentionSeq\": 1}, {\"mentionId\": \"5f2b548d-4d14-4d5d-bba2-5b05d75364e8\", \"segmentId\": \"4c698677-90df-4a0d-be4f-18a3f12bbb26\", \"segmentSeq\": 2, \"startOffset\": 0, \"endOffset\": 8, \"coveredText\": \"34567890\", \"matchMode\": \"SUFFIX\", \"mentionSeq\": 2}]"
+    },
+    {
+      "name": "P3 跨段提及拼回完整卡号 6222021234567890",
+      "pass": true,
+      "detail": "6222021234567890"
+    },
+    {
+      "name": "P3 身份证完整落段1且偏移回链正确",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "P3 住址与健康情况均定位到段2",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "P3 重复定位幂等（registeredCount=0）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "P4 物化视图生成 FRESH",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "P4 视图绑定 DEFAULT v1（configHash 回链）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "P4 视图绑定身份证实体 rev1",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "P4 遮蔽完整性：身份证/卡号/住址/健康原文均不出现",
+      "pass": true,
+      "detail": "客户陈述身份证号【身份证号】，确认银行卡****0212****7890办理扣款，【住址】，【健康情况】"
+    },
+    {
+      "name": "P4 卡号 KEEP_LAST 留尾4位、前缀全遮蔽",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "P4 每处遮蔽回链字段位置与规则版本",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "P4 物化重复调阅直接复用（同 viewId）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "P4 FRESH 视图下载放行",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "P5 质检员按需视图仅含 CASE-QA 关联的两段",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "P5 案件范围外请求拒绝出视图（最小授权）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "P6 身份证识别修正登记 rev2 并取代 rev1",
+      "pass": true,
+      "detail": "{\"entityId\": \"2076cd5d-a7ac-401d-b2af-cdecdded075c\", \"registeredSeq\": 14, \"entityType\": \"ID_CARD\", \"canonicalValue\": \"11010119900307889X\", \"revision\": 2, \"supersedesId\": \"2db3e076-462f-49a5-925f-3407b292b89f\", \"mentions\": [{\"mentionId\": \"b5c6ebe3-9fc1-4f7b-8932-f81b511545ee\", \"segmentId\": \"6c1df6ff-48c7-43b5-9539-5acedfe212f7\", \"segmentSeq\": 1, \"startOffset\": 8, \"endOffset\": 26, \"coveredText\": \"110101199003078888\", \"matchMode\": \"FULL\", \"mentionSeq\": 1}], \"supersededRevision\": 1}"
+    },
+    {
+      "name": "P6 修正事件使物化视图转 STALE（ENTITY_REVISED）",
+      "pass": true,
+      "detail": "ENTITY_REVISED: 敏感实体 2db3e076-462f-49a5-925f-3407b292b89f 经历识别修正至 rev2"
+    },
+    {
+      "name": "P6 STALE 视图新下载被拦截 403",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "P6 拦截在下载留痕中记 granted=false",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "P6 重新物化恢复 FRESH 且绑定实体 rev2",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "P6 重物化后遮蔽仍完整（新旧身份证明文均不出现）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "P6 FRESH 重物化视图下载放行",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "P7 修订前按需视图绑定 DEFAULT v1",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "P7 DEFAULT v2 登记且 v1 保留可回链",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "P7 规则修订使绑定 v1 的物化视图转 STALE（MASKING_RULE_REVISED）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "P7 规则过时视图新下载拦截 403",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "P7 修订后按需视图绑定 DEFAULT v2",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "P7 v2 下银行卡整段全遮蔽（不再留尾号）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "P7 修订前视图仍留存 v1 回链（历史不被改写）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "P8 保全解除（已解封）后仍可物化 FRESH 视图",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "P8 案件范围收窄后新下载拦截 403（CASE_SCOPE_NARROWED）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "P8 换成不含原案件的范围同样拦截",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "P8 范围仍覆盖时下载放行",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "P9 无实体集合的还原申请拒绝（不接受整录音通配）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "P9 还原申请受理 PENDING",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "P9 未批准前凭审批生成视图被拒",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "P9 审批批准 APPROVED",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "P9 批准后生成带还原视图（200）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "P9 授权实体临时还原为转写原文且回链审批单",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "P9 未授权实体仍遮蔽（卡号/住址/健康）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "P9 审批撤销 REVOKED",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "P9 撤销后凭审批生成视图被拒",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "P10 转写新版本接入并取代 v1",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "P10 唯一原证据未删除（旧版 SUPERSEDED 仍可读）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "P10 转写更正使旧物化视图转 STALE（TRANSCRIPT_CORRECTED）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "P10 旧版转写拒绝再出新视图（只能对 ACTIVE 版本生成）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "P10 对新 ACTIVE 版本可正常生成视图",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "P11 下载留痕同时记录放行与拦截",
+      "pass": true,
+      "detail": "granted=3 blocked=4"
+    },
+    {
+      "name": "P11 拦截原因覆盖实体修正/规则修订/范围收窄",
+      "pass": true,
+      "detail": "视图状态 STALE（ENTITY_REVISED: 敏感实体 2db3e076-462f-49a5-925f-3407b292b89f 经历识别修正至 rev2），须重新物化 视图状态 STALE（MASKING_RULE_REVISED: 遮蔽规则 DEFAULT 已修订至 v2（水位 20）），须重新物化 CASE_SCOPE_NARROWED: 视图案件范围 [CASE-QA] 超出当前授权范围 [] CASE_SCOPE_NARROWED: 视图案件范围 [CASE-QA] 超出当前授权范围 [CASE-OTHER]"
+    }
+  ]
+}

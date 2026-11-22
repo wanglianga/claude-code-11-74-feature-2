@@ -19,14 +19,18 @@ public class AccessPolicy {
 
     private static final Map<String, Grant> GRANTS = Map.of(
             "COMPLIANCE_OFFICER", new Grant(ALL_CLASSES,
-                    Set.of("SALES_REVIEW", "COLLECTION", "AUDIT", "COMPLIANCE", "CUSTOMER_CARE")),
+                    Set.of("SALES_REVIEW", "COLLECTION", "AUDIT", "COMPLIANCE", "CUSTOMER_CARE",
+                            "COMPLAINT_REVIEW")),
             "AUDITOR", new Grant(ALL_CLASSES, Set.of("AUDIT", "COMPLIANCE")),
             "COLLECTION_AGENT", new Grant(Set.of("PUBLIC", "GENERAL", "PII_BASIC"),
                     Set.of("COLLECTION")),
             "SALES_SUPERVISOR", new Grant(Set.of("PUBLIC", "GENERAL", "PII_BASIC"),
                     Set.of("SALES_REVIEW")),
             "CUSTOMER_SERVICE", new Grant(Set.of("PUBLIC", "GENERAL"),
-                    Set.of("CUSTOMER_CARE")));
+                    Set.of("CUSTOMER_CARE")),
+            // 质检员：最小权限，仅可基于投诉目的调阅 PUBLIC/GENERAL，敏感实体一律经遮蔽视图呈现
+            "QUALITY_INSPECTOR", new Grant(Set.of("PUBLIC", "GENERAL"),
+                    Set.of("COMPLAINT_REVIEW")));
 
     public boolean knownRole(String role) {
         return GRANTS.containsKey(role);

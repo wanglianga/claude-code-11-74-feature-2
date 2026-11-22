@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class AdminController {
 
     private static final String[] TABLES = {
+            "evidence_view_download", "evidence_view", "reveal_approval", "masking_rule",
+            "sensitive_entity_mention", "sensitive_entity",
             "execution_ledger", "escalation_record", "disposal_candidate", "disposal_plan",
             "access_snapshot", "ledger_maintenance_log", "obligation_entry", "retention_rule",
             "ingest_conflict", "business_event", "field_classification", "recording_segment",

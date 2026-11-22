@@ -41,7 +41,7 @@
     {
       "name": "S1 销售规则登记（终止日起6年）",
       "pass": true,
-      "detail": "{\"ruleId\": \"ff29c8f6-51dc-4c21-8878-bdc68a31bc6a\", \"registeredSeq\": 1, \"affectedSegments\": 0, \"compensationsWritten\": 0, \"message\": \"规则已登记（不追溯既有事实）\"}"
+      "detail": "{\"ruleId\": \"1ca58633-4777-4606-8d28-3bfcbc2ad898\", \"registeredSeq\": 1, \"affectedSegments\": 0, \"compensationsWritten\": 0, \"message\": \"规则已登记（不追溯既有事实）\"}"
     },
     {
       "name": "S1 催收规则登记（结案日起3年）",
@@ -51,7 +51,7 @@
     {
       "name": "S2 REC-A 接入（360秒/双声道/两片段）",
       "pass": true,
-      "detail": "{\"outcome\": \"CREATED\", \"recordingId\": \"f6efa73c-405d-4040-8ba2-ebcf4ae4fbcf\", \"segmentIds\": [\"611746e3-3796-4994-9b72-bc2a7dab1336\", \"c6f8077a-f2bf-4ac4-8947-beba004c47ff\"], \"conflictId\": null, \"message\": \"\\u5df2\\u63a5\\u5165\"}"
+      "detail": "{\"outcome\": \"CREATED\", \"recordingId\": \"07b1cc77-6cf6-43fe-b757-5a5b10bd6d85\", \"segmentIds\": [\"31e76760-f7b9-4903-bdc4-347777bce920\", \"fbbedd8f-8169-4171-b38c-29b900cd691b\"], \"conflictId\": null, \"message\": \"\\u5df2\\u63a5\\u5165\"}"
     },
     {
       "name": "S2 相同幂等键+相同内容 → 幂等重放不重复建账",
@@ -121,12 +121,12 @@
     {
       "name": "S4 销售片段义务：SALES-RET 至 2027-06-30 仍保留",
       "pass": true,
-      "detail": "[{\"ruleCode\": \"SALES-RET\", \"ruleVersion\": 1, \"ruleId\": \"ff29c8f6-51dc-4c21-8878-bdc68a31bc6a\", \"factKey\": \"PROD-P1\", \"factType\": \"PRODUCT_TERMINATION\", \"factStatus\": \"CONFIRMED\", \"triggerDate\": \"2021-06-30\", \"expiryDate\": \"2027-06-30\", \"basis\": \"RULE_CONFIRMED\", \"state\": \"RETAINED\"}]"
+      "detail": "[{\"ruleCode\": \"SALES-RET\", \"ruleVersion\": 1, \"ruleId\": \"1ca58633-4777-4606-8d28-3bfcbc2ad898\", \"factKey\": \"PROD-P1\", \"factType\": \"PRODUCT_TERMINATION\", \"factStatus\": \"CONFIRMED\", \"triggerDate\": \"2021-06-30\", \"expiryDate\": \"2027-06-30\", \"basis\": \"RULE_CONFIRMED\", \"state\": \"RETAINED\"}]"
     },
     {
       "name": "S4 催收片段义务：COLL-RET 至 2025-03-31 已到期",
       "pass": true,
-      "detail": "[{\"ruleCode\": \"COLL-RET\", \"ruleVersion\": 1, \"ruleId\": \"6221380d-f38d-4dea-aff4-0566ffe9a3dc\", \"factKey\": \"COLL-C1\", \"factType\": \"COLLECTION_CLOSURE\", \"factStatus\": \"CONFIRMED\", \"triggerDate\": \"2022-03-31\", \"expiryDate\": \"2025-03-31\", \"basis\": \"RULE_CONFIRMED\", \"state\": \"EXPIRED\"}]"
+      "detail": "[{\"ruleCode\": \"COLL-RET\", \"ruleVersion\": 1, \"ruleId\": \"a2f226f7-c1ed-4a96-94bf-acd880acb156\", \"factKey\": \"COLL-C1\", \"factType\": \"COLLECTION_CLOSURE\", \"factStatus\": \"CONFIRMED\", \"triggerDate\": \"2022-03-31\", \"expiryDate\": \"2025-03-31\", \"basis\": \"RULE_CONFIRMED\", \"state\": \"EXPIRED\"}]"
     },
     {
       "name": "S4 整对象不得处置（销售片段仍保留）",
@@ -161,7 +161,7 @@
     {
       "name": "S5 后到冻结撤销未执行候选并保留撤销原因",
       "pass": true,
-      "detail": "event:HOLD_PLACED#19 → seg#1 保全未解除: HOLD-CMP1 scope=RECORDING/7944393a-b7ae-4ba7-8e48-8fa1c61508a2"
+      "detail": "event:HOLD_PLACED#19 → seg#1 保全未解除: HOLD-CMP1 scope=RECORDING/2bd23740-25da-4a67-813d-3b874f0890ab"
     },
     {
       "name": "S5 已撤销候选不可执行（未提交处置）",
@@ -216,7 +216,7 @@
     {
       "name": "S7 更正后销售片段义务到期日 2025-06-30（已到期）",
       "pass": true,
-      "detail": "[{\"ruleCode\": \"SALES-RET\", \"ruleVersion\": 1, \"ruleId\": \"ff29c8f6-51dc-4c21-8878-bdc68a31bc6a\", \"factKey\": \"PROD-P1\", \"factType\": \"PRODUCT_TERMINATION\", \"factStatus\": \"CONFIRMED\", \"triggerDate\": \"2019-06-30\", \"expiryDate\": \"2025-06-30\", \"basis\": \"RULE_CONFIRMED\", \"state\": \"EXPIRED\"}]"
+      "detail": "[{\"ruleCode\": \"SALES-RET\", \"ruleVersion\": 1, \"ruleId\": \"1ca58633-4777-4606-8d28-3bfcbc2ad898\", \"factKey\": \"PROD-P1\", \"factType\": \"PRODUCT_TERMINATION\", \"factStatus\": \"CONFIRMED\", \"triggerDate\": \"2019-06-30\", \"expiryDate\": \"2025-06-30\", \"basis\": \"RULE_CONFIRMED\", \"state\": \"EXPIRED\"}]"
     },
     {
       "name": "S7 更正后整对象具备处置资格",
@@ -226,7 +226,7 @@
     {
       "name": "S7 路线B留痕补偿记录（作废1+更正1）",
       "pass": true,
-      "detail": "[{\"id\": \"8fee2982-d707-4085-b101-4f3bca4c432f\", \"reason\": \"event:FACT_CORRECTED#22\", \"triggerRef\": \"event:22\", \"segmentsScanned\": 1, \"entriesAdded\": 1, \"entriesVoided\": 1, \"detail\": {\"segments\": [{\"segmentId\": \"611746e3-3796-4994-9b72-bc2a7dab1336\", \"derivedNow\": 1, \"activeBefore\": 1}]}, \"createdAt\": \"2026-11-22T20:41:24.069742Z\"}]"
+      "detail": "[{\"id\": \"906d01e7-5612-46c3-8446-89b3b08ac4eb\", \"reason\": \"event:FACT_CORRECTED#22\", \"triggerRef\": \"event:22\", \"segmentsScanned\": 1, \"entriesAdded\": 1, \"entriesVoided\": 1, \"detail\": {\"segments\": [{\"segmentId\": \"31e76760-f7b9-4903-bdc4-347777bce920\", \"derivedNow\": 1, \"activeBefore\": 1}]}, \"createdAt\": \"2026-11-22T21:46:18.961600Z\"}]"
     },
     {
       "name": "S8 追溯前 C3 按 v1(3年) 至 2026-05-10 仍保留",
@@ -236,12 +236,12 @@
     {
       "name": "S8 追溯规则 v2（仅覆盖2023-03后事实）只影响 REC-C",
       "pass": true,
-      "detail": "{\"ruleId\": \"ff01c2ce-d5b7-4b18-a603-d570ade3f30d\", \"registeredSeq\": 33, \"affectedSegments\": 1, \"compensationsWritten\": 2, \"message\": \"规则已登记并追溯重放\"}"
+      "detail": "{\"ruleId\": \"2259dd5f-b629-4f81-b724-2d3f2bbc82b9\", \"registeredSeq\": 33, \"affectedSegments\": 1, \"compensationsWritten\": 2, \"message\": \"规则已登记并追溯重放\"}"
     },
     {
       "name": "S8 C3 改按 v2(2年) 至 2025-05-10 已到期",
       "pass": true,
-      "detail": "[{\"ruleCode\": \"COLL-RET\", \"ruleVersion\": 2, \"ruleId\": \"ff01c2ce-d5b7-4b18-a603-d570ade3f30d\", \"factKey\": \"COLL-C3\", \"factType\": \"COLLECTION_CLOSURE\", \"factStatus\": \"CONFIRMED\", \"triggerDate\": \"2023-05-10\", \"expiryDate\": \"2025-05-10\", \"basis\": \"RULE_CONFIRMED\", \"state\": \"EXPIRED\"}]"
+      "detail": "[{\"ruleCode\": \"COLL-RET\", \"ruleVersion\": 2, \"ruleId\": \"2259dd5f-b629-4f81-b724-2d3f2bbc82b9\", \"factKey\": \"COLL-C3\", \"factType\": \"COLLECTION_CLOSURE\", \"factStatus\": \"CONFIRMED\", \"triggerDate\": \"2023-05-10\", \"expiryDate\": \"2025-05-10\", \"basis\": \"RULE_CONFIRMED\", \"state\": \"EXPIRED\"}]"
     },
     {
       "name": "S8 C4 在适用区间外仍按 v1(3年)",
@@ -251,7 +251,7 @@
     {
       "name": "S9 起算事实未确认 → 未确定依据（PENDING，不提前到期）",
       "pass": true,
-      "detail": "[{\"ruleCode\": \"COLL-RET\", \"ruleVersion\": 1, \"ruleId\": \"6221380d-f38d-4dea-aff4-0566ffe9a3dc\", \"factKey\": \"COLL-C5\", \"factType\": \"COLLECTION_CLOSURE\", \"factStatus\": \"UNCONFIRMED\", \"triggerDate\": \"2023-01-10\", \"expiryDate\": null, \"basis\": \"BASIS_UNDETERMINED\", \"state\": \"PENDING\"}]"
+      "detail": "[{\"ruleCode\": \"COLL-RET\", \"ruleVersion\": 1, \"ruleId\": \"a2f226f7-c1ed-4a96-94bf-acd880acb156\", \"factKey\": \"COLL-C5\", \"factType\": \"COLLECTION_CLOSURE\", \"factStatus\": \"UNCONFIRMED\", \"triggerDate\": \"2023-01-10\", \"expiryDate\": null, \"basis\": \"BASIS_UNDETERMINED\", \"state\": \"PENDING\"}]"
     },
     {
       "name": "S9 未确认起算阻断整对象处置",
@@ -271,7 +271,7 @@
     {
       "name": "S10 调阅投影：仅 CASE-C1 关联片段被允许",
       "pass": true,
-      "detail": "allowed=['c6f8077a-f2bf-4ac4-8947-beba004c47ff']"
+      "detail": "allowed=['fbbedd8f-8169-4171-b38c-29b900cd691b']"
     },
     {
       "name": "S10 字段级投影：允许 AUDIO/TRANSCRIPT/CUSTOMER_NAME",
@@ -336,7 +336,7 @@
     {
       "name": "S11 已执行候选遇新保全 → 生成事实冲突与升级记录",
       "pass": true,
-      "detail": "[{\"id\": \"0b26a21d-d0e6-47d4-b473-7e0e283dce8a\", \"kind\": \"EXECUTED_DISPOSAL_FACT_CONFLICT\", \"recordingId\": \"7944393a-b7ae-4ba7-8e48-8fa1c61508a2\", \"candidateId\": \"4b014bb1-b1c6-4359-a579-bf6987d91d38\", \"operationNo\": \"OP-4b014bb1-b1c6-4359-a579-bf6987d91d38\", \"details\": {\"note\": \"到处置执行后出现新的义务/保全事实：原件已删除，记录冲突并升级核查，不伪称恢复\", \"trigger\": \"event:HOLD_PLACED#47\", \"blockReasonsNow\": [\"seg#1 保全未解除: HOLD-LATE scope=RECORDING/7944393a-b7ae-4ba7-8e48-8fa1c61508a2\"]}, \"status\": \"OPEN\", \"createdAt\": \"2026-11-22T20:41:24.699188Z\"}]"
+      "detail": "[{\"id\": \"71b79799-6508-46de-b75e-9c3a6a0c3bd5\", \"kind\": \"EXECUTED_DISPOSAL_FACT_CONFLICT\", \"recordingId\": \"2bd23740-25da-4a67-813d-3b874f0890ab\", \"candidateId\": \"3aa0732b-5d74-4241-a1a9-acb6113031e7\", \"operationNo\": \"OP-3aa0732b-5d74-4241-a1a9-acb6113031e7\", \"details\": {\"note\": \"到处置执行后出现新的义务/保全事实：原件已删除，记录冲突并升级核查，不伪称恢复\", \"trigger\": \"event:HOLD_PLACED#47\", \"blockReasonsNow\": [\"seg#1 保全未解除: HOLD-LATE scope=RECORDING/2bd23740-25da-4a67-813d-3b874f0890ab\"]}, \"status\": \"OPEN\", \"createdAt\": \"2026-11-22T21:46:19.353328Z\"}]"
     },
     {
       "name": "S11 不伪称恢复已删除原件（执行账仍 SUCCESS）",

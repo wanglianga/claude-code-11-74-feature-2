@@ -1,0 +1,382 @@
+{
+  "base": "http://127.0.0.1:8080",
+  "asOf": "2026-04-01",
+  "total": 70,
+  "passed": 70,
+  "failed": 0,
+  "costRouteA": {
+    "eventsFolded": 19,
+    "segmentsVisited": 6,
+    "linksWalked": 4,
+    "factsLoaded": 4,
+    "rulesConsidered": 12,
+    "ledgerEntriesRead": 0,
+    "voidCompensationsApplied": 0
+  },
+  "costRouteB": {
+    "eventsFolded": 19,
+    "segmentsVisited": 0,
+    "linksWalked": 0,
+    "factsLoaded": 0,
+    "rulesConsidered": 0,
+    "ledgerEntriesRead": 4,
+    "voidCompensationsApplied": 2
+  },
+  "ledgerCompensations": {
+    "voided": 3,
+    "added": 9,
+    "batches": 20
+  },
+  "results": [
+    {
+      "name": "S0 重置成功",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S0 OpenAPI 文档可用",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S1 销售规则登记（终止日起6年）",
+      "pass": true,
+      "detail": "{\"ruleId\": \"ff29c8f6-51dc-4c21-8878-bdc68a31bc6a\", \"registeredSeq\": 1, \"affectedSegments\": 0, \"compensationsWritten\": 0, \"message\": \"规则已登记（不追溯既有事实）\"}"
+    },
+    {
+      "name": "S1 催收规则登记（结案日起3年）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S2 REC-A 接入（360秒/双声道/两片段）",
+      "pass": true,
+      "detail": "{\"outcome\": \"CREATED\", \"recordingId\": \"f6efa73c-405d-4040-8ba2-ebcf4ae4fbcf\", \"segmentIds\": [\"611746e3-3796-4994-9b72-bc2a7dab1336\", \"c6f8077a-f2bf-4ac4-8947-beba004c47ff\"], \"conflictId\": null, \"message\": \"\\u5df2\\u63a5\\u5165\"}"
+    },
+    {
+      "name": "S2 相同幂等键+相同内容 → 幂等重放不重复建账",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S2 重复到达后接入账仍只有1个 REC-A",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S2 相同版本内容不同 → 409 冲突待核",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S2 来源修订链：v2 取代 v1",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S2 修订链状态与指向",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S3 产品终止事件（2021-06-30 生效）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S3 催收结案事件（2022-03-31 生效）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S3 关联：前180秒→产品终止事实",
+      "pass": true,
+      "detail": "受影响片段=1 补偿=1"
+    },
+    {
+      "name": "S3 关联：后180秒→催收结案事实",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S3 事件相同键+相同内容 → 幂等不重复应用",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S3 事件相同键内容不同 → 409 冲突待核",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S3 冲突待核账（录音+事件共2条）",
+      "pass": true,
+      "detail": "conflicts=2"
+    },
+    {
+      "name": "S3 补发新版本事件 → 应用且义务不重复",
+      "pass": true,
+      "detail": "补偿=0"
+    },
+    {
+      "name": "S4 销售片段义务：SALES-RET 至 2027-06-30 仍保留",
+      "pass": true,
+      "detail": "[{\"ruleCode\": \"SALES-RET\", \"ruleVersion\": 1, \"ruleId\": \"ff29c8f6-51dc-4c21-8878-bdc68a31bc6a\", \"factKey\": \"PROD-P1\", \"factType\": \"PRODUCT_TERMINATION\", \"factStatus\": \"CONFIRMED\", \"triggerDate\": \"2021-06-30\", \"expiryDate\": \"2027-06-30\", \"basis\": \"RULE_CONFIRMED\", \"state\": \"RETAINED\"}]"
+    },
+    {
+      "name": "S4 催收片段义务：COLL-RET 至 2025-03-31 已到期",
+      "pass": true,
+      "detail": "[{\"ruleCode\": \"COLL-RET\", \"ruleVersion\": 1, \"ruleId\": \"6221380d-f38d-4dea-aff4-0566ffe9a3dc\", \"factKey\": \"COLL-C1\", \"factType\": \"COLLECTION_CLOSURE\", \"factStatus\": \"CONFIRMED\", \"triggerDate\": \"2022-03-31\", \"expiryDate\": \"2025-03-31\", \"basis\": \"RULE_CONFIRMED\", \"state\": \"EXPIRED\"}]"
+    },
+    {
+      "name": "S4 整对象不得处置（销售片段仍保留）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S4 普通保留到期日取已确认义务最晚到期日",
+      "pass": true,
+      "detail": "seg1=2027-06-30 seg2=2025-03-31"
+    },
+    {
+      "name": "S4 路线B（义务账）与路线A同截点结论一致",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S5 仅含已到期催收片段的 REC-B 成为候选",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S5 REC-A 被阻断并记录原因（销售片段未到期）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S5 投诉保全登记",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S5 后到冻结撤销未执行候选并保留撤销原因",
+      "pass": true,
+      "detail": "event:HOLD_PLACED#19 → seg#1 保全未解除: HOLD-CMP1 scope=RECORDING/7944393a-b7ae-4ba7-8e48-8fa1c61508a2"
+    },
+    {
+      "name": "S5 已撤销候选不可执行（未提交处置）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S5 执行账中无 REC-B 的处置记录",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S6 保全解除后 REC-B 重新成为候选（路线B计划）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S6 回执超时 → 结果未知而非成功",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S6 凭原操作号核对：仍 UNKNOWN（不计为成功）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S6 迟到回执按原操作号落定 SUCCESS",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S6 重复回执不重复处置",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S6 执行账仅一条 REC-B 记录且为 SUCCESS",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S6 REC-B 状态已处置",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S7 起算日期更正 2021-06-30→2019-06-30，传播到受影响片段",
+      "pass": true,
+      "detail": "受影响=1 补偿=2"
+    },
+    {
+      "name": "S7 更正后销售片段义务到期日 2025-06-30（已到期）",
+      "pass": true,
+      "detail": "[{\"ruleCode\": \"SALES-RET\", \"ruleVersion\": 1, \"ruleId\": \"ff29c8f6-51dc-4c21-8878-bdc68a31bc6a\", \"factKey\": \"PROD-P1\", \"factType\": \"PRODUCT_TERMINATION\", \"factStatus\": \"CONFIRMED\", \"triggerDate\": \"2019-06-30\", \"expiryDate\": \"2025-06-30\", \"basis\": \"RULE_CONFIRMED\", \"state\": \"EXPIRED\"}]"
+    },
+    {
+      "name": "S7 更正后整对象具备处置资格",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S7 路线B留痕补偿记录（作废1+更正1）",
+      "pass": true,
+      "detail": "[{\"id\": \"8fee2982-d707-4085-b101-4f3bca4c432f\", \"reason\": \"event:FACT_CORRECTED#22\", \"triggerRef\": \"event:22\", \"segmentsScanned\": 1, \"entriesAdded\": 1, \"entriesVoided\": 1, \"detail\": {\"segments\": [{\"segmentId\": \"611746e3-3796-4994-9b72-bc2a7dab1336\", \"derivedNow\": 1, \"activeBefore\": 1}]}, \"createdAt\": \"2026-11-22T20:41:24.069742Z\"}]"
+    },
+    {
+      "name": "S8 追溯前 C3 按 v1(3年) 至 2026-05-10 仍保留",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S8 追溯规则 v2（仅覆盖2023-03后事实）只影响 REC-C",
+      "pass": true,
+      "detail": "{\"ruleId\": \"ff01c2ce-d5b7-4b18-a603-d570ade3f30d\", \"registeredSeq\": 33, \"affectedSegments\": 1, \"compensationsWritten\": 2, \"message\": \"规则已登记并追溯重放\"}"
+    },
+    {
+      "name": "S8 C3 改按 v2(2年) 至 2025-05-10 已到期",
+      "pass": true,
+      "detail": "[{\"ruleCode\": \"COLL-RET\", \"ruleVersion\": 2, \"ruleId\": \"ff01c2ce-d5b7-4b18-a603-d570ade3f30d\", \"factKey\": \"COLL-C3\", \"factType\": \"COLLECTION_CLOSURE\", \"factStatus\": \"CONFIRMED\", \"triggerDate\": \"2023-05-10\", \"expiryDate\": \"2025-05-10\", \"basis\": \"RULE_CONFIRMED\", \"state\": \"EXPIRED\"}]"
+    },
+    {
+      "name": "S8 C4 在适用区间外仍按 v1(3年)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S9 起算事实未确认 → 未确定依据（PENDING，不提前到期）",
+      "pass": true,
+      "detail": "[{\"ruleCode\": \"COLL-RET\", \"ruleVersion\": 1, \"ruleId\": \"6221380d-f38d-4dea-aff4-0566ffe9a3dc\", \"factKey\": \"COLL-C5\", \"factType\": \"COLLECTION_CLOSURE\", \"factStatus\": \"UNCONFIRMED\", \"triggerDate\": \"2023-01-10\", \"expiryDate\": null, \"basis\": \"BASIS_UNDETERMINED\", \"state\": \"PENDING\"}]"
+    },
+    {
+      "name": "S9 未确认起算阻断整对象处置",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S9 事实确认后补偿传播",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S9 确认后按 v1(3年) 至 2026-01-10 已到期",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S10 调阅投影：仅 CASE-C1 关联片段被允许",
+      "pass": true,
+      "detail": "allowed=['c6f8077a-f2bf-4ac4-8947-beba004c47ff']"
+    },
+    {
+      "name": "S10 字段级投影：允许 AUDIO/TRANSCRIPT/CUSTOMER_NAME",
+      "pass": true,
+      "detail": "[\"AUDIO\", \"CUSTOMER_NAME\", \"TRANSCRIPT\"]"
+    },
+    {
+      "name": "S10 敏感字段按分类拒绝（ID_NUMBER/BANK_CARD）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S10 销售片段因案件范围被拒",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S10 同账户未关联电话不按账户归并（NO_ACTIVE_LINK）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S10 快照固定证据水位与规则版本",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S10 历史复演与原快照一致",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S10 范围收窄后新求值全部拒绝",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S10 新授权不替换旧回执（旧快照复演仍一致）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S10 再次下载须过当前授权：范围收窄→403 不放行",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S10 当前授权覆盖时可下载快照允许内容",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S10 角色-用途不匹配全部拒绝（保留义务≠任意角色可看）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S11 已处置对象上后到冻结被接受并传播",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S11 已执行候选遇新保全 → 生成事实冲突与升级记录",
+      "pass": true,
+      "detail": "[{\"id\": \"0b26a21d-d0e6-47d4-b473-7e0e283dce8a\", \"kind\": \"EXECUTED_DISPOSAL_FACT_CONFLICT\", \"recordingId\": \"7944393a-b7ae-4ba7-8e48-8fa1c61508a2\", \"candidateId\": \"4b014bb1-b1c6-4359-a579-bf6987d91d38\", \"operationNo\": \"OP-4b014bb1-b1c6-4359-a579-bf6987d91d38\", \"details\": {\"note\": \"到处置执行后出现新的义务/保全事实：原件已删除，记录冲突并升级核查，不伪称恢复\", \"trigger\": \"event:HOLD_PLACED#47\", \"blockReasonsNow\": [\"seg#1 保全未解除: HOLD-LATE scope=RECORDING/7944393a-b7ae-4ba7-8e48-8fa1c61508a2\"]}, \"status\": \"OPEN\", \"createdAt\": \"2026-11-22T20:41:24.699188Z\"}]"
+    },
+    {
+      "name": "S11 不伪称恢复已删除原件（执行账仍 SUCCESS）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S12 追溯后 REC-C 成为候选",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S12 REC-C 提交前重新核验通过并执行",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S12 终态后矛盾回执 → 记录冲突不覆盖",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S12 矛盾回执升级记录在案",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S13 全部ACTIVE对象双路线结论一致",
+      "pass": true,
+      "detail": "对象数=5"
+    },
+    {
+      "name": "S13 路线A遍历全部片段而路线B只读账载条目",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S13 同一更正上路线B以补偿记录传播（作废+新增）",
+      "pass": true,
+      "detail": ""
+    }
+  ]
+}
